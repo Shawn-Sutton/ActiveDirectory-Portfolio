@@ -1,54 +1,60 @@
-# Active Directory Concepts
 
-This document provides an overview of fundamental Active Directory (AD) components and concepts to help you understand the scripts included in this project.
+# 🧠 Active Directory Concepts
 
----
-
-## What is Active Directory?
-
-Active Directory is a Microsoft technology used for managing computers, users, and resources in a networked environment. It provides centralized domain management, authentication, and authorization.
+This guide introduces essential Active Directory (AD) components to support the automation scripts included in this project.
 
 ---
 
-## Key Components
+## 🏢 What is Active Directory?
 
-### 1. Domain
-
-A domain is a logical group of network objects (users, computers, devices) that share the same Active Directory database.
-
-### 2. Organizational Units (OUs)
-
-OUs are containers within a domain used to organize users, groups, and computers logically. They help apply group policies and delegate administrative control.
-
-### 3. Users
-
-User accounts represent individual people or services that access resources on the network.
-
-### 4. Groups
-
-Groups are collections of user accounts. They simplify permission management by assigning rights to the group rather than individual users.
-
-- **Security Groups** — Used to assign permissions to resources.
-- **Distribution Groups** — Used for email distribution lists.
+Active Directory is Microsoft's centralized system for managing users, computers, and resources in a domain environment. It handles:
+- 🆔 Authentication
+- 🛂 Authorization
+- 🧭 Directory-based organization
 
 ---
 
-## Common Active Directory Tasks Covered in This Project
+## 🧩 Key Components
 
-- Creating users and groups.
-- Organizing users into OUs.
-- Adding users to groups.
-- Removing users.
+### 🌐 Domain
+A container for network objects that share a unified AD database.
+
+### 🗂️ Organizational Units (OUs)
+Sub-containers within a domain used to logically group users, devices, and apply policies.
+
+### 👤 Users
+Accounts representing people or services that access domain resources.
+
+### 👥 Groups
+Collections of users used to simplify access and permission control.
+
+- **Security Groups** — For resource permissions  
+- **Distribution Groups** — For email communication lists
 
 ---
 
-## PowerShell and Active Directory
+## 🔧 AD Tasks Automated by This Project
 
-PowerShell is a powerful scripting language to automate AD tasks. The `ActiveDirectory` PowerShell module provides cmdlets like:
+- ✅ Create users and groups  
+- ✅ Add users to groups  
+- ✅ Remove users  
+- ✅ Automate actions via PowerShell
 
-- `New-ADUser` — Create a new user.
-- `New-ADGroup` — Create a new group.
-- `Add-ADGroupMember` — Add a user to a group.
-- `Remove-ADUser` — Remove a user.
+---
 
-This project includes scripts leveraging these cmdlets for automation.
+## 💻 PowerShell Cmdlets & Linked Scripts
+
+These scripts use the `ActiveDirectory` PowerShell module:
+
+| Cmdlet | Purpose | Script |
+|--------|---------|--------|
+| `New-ADUser` | Creates a new user | [`Create-ADUser.ps1`](https://github.com/Shawn-Sutton/ActiveDirectory-Portfolio/blob/main/scripts/Create-ADUser.ps1) |
+| `New-ADGroup` | Creates a new group | [`Create-ADGroup.ps1`](https://github.com/Shawn-Sutton/ActiveDirectory-Portfolio/blob/main/scripts/Create-ADGroup.ps1) |
+| `Add-ADGroupMember` | Adds a user to a group | [`Add-UserToGroup.ps1`](https://github.com/Shawn-Sutton/ActiveDirectory-Portfolio/blob/main/scripts/Add-UserToGroup.ps1) |
+| `Remove-ADUser` | Deletes a user | [`Remove-ADUser.ps1`](https://github.com/Shawn-Sutton/ActiveDirectory-Portfolio/blob/main/scripts/Remove-ADUser.ps1) |
+
+Each script includes timestamped logging to `toolkit.log` and is designed to run in a domain environment with RSAT tools installed.
+
+---
+
+🧠 *Tip: You can explore the full project and documentation on [GitHub here](https://github.com/Shawn-Sutton/ActiveDirectory-Portfolio).*
