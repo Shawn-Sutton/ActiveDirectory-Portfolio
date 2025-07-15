@@ -1,71 +1,101 @@
-# How to Run the Active Directory PowerShell Scripts
+# 🧑‍💼 How to Run the Active Directory PowerShell Scripts
 
 This guide explains how to use the PowerShell scripts included in this project to perform common Active Directory tasks.
 
 ---
 
-## Prerequisites
+## 📋 Prerequisites
 
-- Windows machine joined to an Active Directory domain.
-- Active Directory PowerShell module installed (comes with RSAT tools).
-- Proper permissions to create/manage users and groups in AD.
-- PowerShell running as Administrator.
+- 🖥️ Windows machine joined to an Active Directory domain  
+- 🔧 Active Directory PowerShell module installed (via RSAT tools)  
+- 🔐 Admin permissions to manage users and groups  
+- 🧑‍💻 PowerShell must be run **as Administrator**
 
 ---
 
-## Running the Scripts
+## 🚀 Step-by-Step Instructions
 
-### 1. Open PowerShell as Administrator
+### 1️⃣ Open PowerShell as Administrator
 
-Right-click on PowerShell and select "Run as Administrator".
+Right-click the PowerShell icon and choose **Run as Administrator**.
 
-### 2. Set Execution Policy for the Session (if needed)
+---
+
+### 2️⃣ Set Execution Policy for the Session (Optional)
+
+If your system restricts script execution, run:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-This allows running unsigned scripts temporarily.
 
-3. Navigate to the scripts Folder
-powershell
+This enables temporary script execution for the current session only.
+
+3️⃣ Navigate to the Scripts Folder
+
 cd <path-to-project-folder>\scripts
-4. Running the Scripts
-Create a New User
-powershell
+
+Replace <path-to-project-folder> with your actual local path.
+
+🔧 Script Usage Examples
+
+🆕 Create a New AD User
+
 .\Create-ADUser.ps1 -UserName "jdoe" -FirstName "John" -LastName "Doe" -Password "P@ssw0rd!"
-Create a New Group
-powershell
+
+👥 Create a Security Group
+
 .\Create-ADGroup.ps1 -GroupName "ITSupport" -GroupScope "Global"
-Add User to Group
-powershell
-Copy
-Edit
+
+➕ Add User to a Group
+
 .\Add-UserToGroup.ps1 -UserName "jdoe" -GroupName "ITSupport"
-Remove a User
-powershell
+
+❌ Remove a User
+
 .\Remove-ADUser.ps1 -UserName "jdoe"
-Script Parameters
--UserName: The username or sAMAccountName for the user.
 
--FirstName: User's first name (for creation).
+⚙️ Script Parameters Overview
 
--LastName: User's last name (for creation).
+Parameter
 
--Password: Password for the new user.
+Description
 
--GroupName: Name of the AD group.
+-UserName
 
--GroupScope: Group scope (Global, DomainLocal, Universal).
+sAMAccountName of the user
 
-Notes
-Customize parameters as needed.
+-FirstName
 
-Make sure passwords meet your domain password policy.
+User’s first name (for creation only)
 
-Scripts must be run with an account that has the appropriate AD permissions.
+-LastName
 
-Troubleshooting
-If you get “command not found” errors, make sure the Active Directory module is installed.
+User’s last name (for creation only)
 
-Check your user permissions.
+-Password
 
-For detailed errors, run scripts with -Verbose parameter (if implemented).
+Password for new user
+
+-GroupName
+
+Target AD group name
+
+-GroupScope
+
+Scope of group: Global, DomainLocal, Universal
+
+🛠️ Troubleshooting Tips
+
+If you see a “command not found” error:
+
+Confirm Active Directory module is installed via RSAT
+
+Use Import-Module ActiveDirectory manually if needed
+
+Ensure your credentials have sufficient permissions
+
+To debug deeper issues, add the -Verbose flag if supported:
+
+.\Create-ADUser.ps1 -UserName "jdoe" -Verbose
+
+📌 All scripts log actions to toolkit.log for auditing and review. Make sure this file is writable in the script directory.
